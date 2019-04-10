@@ -2,8 +2,8 @@ require "test_helper"
 
 describe TasksController do
   let (:task) {
-    Task.create name: "sample task", description: "this is an example for a test",
-                completion_date: Time.now + 5.days
+    Task.create task_name: "sample task", description: "this is an example for a test",
+                date_due: Time.now + 5.days
   }
 
   # Tests for Wave 1
@@ -66,9 +66,9 @@ describe TasksController do
       # Arrange
       task_hash = {
         task: {
-          name: "new task",
+          task_name: "new task",
           description: "new task description",
-          completion_date: nil,
+          date_due: nil,
         },
       }
 
@@ -77,7 +77,7 @@ describe TasksController do
         post tasks_path, params: task_hash
       }.must_change "Task.count", 1
 
-      new_task = Task.find_by(name: task_hash[:task][:name])
+      new_task = Task.find_by(task_name: task_hash[:task][:task_name])
       expect(new_task.description).must_equal task_hash[:task][:description]
       expect(new_task.due_date.to_time.to_i).must_equal task_hash[:task][:due_date].to_i
       expect(new_task.completed).must_equal task_hash[:task][:completed]

@@ -1,10 +1,20 @@
-<h1>Tasks#index</h1>
-<p>Find me in app/views/tasks/index.html.erb</p>
+<h1>Function-Over-Form</h1>
+<p>It's not pretty, but this form helps you get the job done!</p>
 <ul>
 <% @tasks.each do |task| %>
   <li>
-    <%= task.task_name %> 
-    is due: <%= task.date_due %>
+    <%= link_to task.task_name, task_path(task.id) %> 
+    is due: 
+    <%= task.date_due %>
+    Done?
+    <%= task.completed %>
+    <%= link_to "toggle", task_path(task.id),
+    method: :patch, data: task.toggle_completed_status%>
+    <%= link_to "Edit", edit_task_path(task.id) %>
+    <%= link_to 'Delete', task_path(task), 
+      method: :delete, data: { confirm: 'Are you sure?' } %>
   </li>
 <% end %>
 </ul>
+
+<%= link_to "new task", new_task_path %>

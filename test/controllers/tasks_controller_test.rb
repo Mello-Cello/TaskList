@@ -186,21 +186,40 @@ describe TasksController do
   # Complete these tests for Wave 4
   describe "destroy" do
     before do
-      Task.create(task_name: "Acquire a rain jacket", description: "One that is waterproof; check the bins.", date_due: "2020-03-15")
+      Task.create(task_name: "Acquire a rain jacket", description: "One that is waterproof; check The Bins.", date_due: "2020-03-15")
+
+      Task.create(task_name: "Take a break!", description: "Go outside, play your cello, take your eyes away from the screen. Do it!!", date_due: "2020-03-15")
     end
 
     it "will destroy an existing task" do
-      skip
+      # skip
       # Arrange
-      change_task = Task.find_by(task_name: "Acquire a rain jacket")
+      task_to_delete = Task.find_by(task_name: "Acquire a rain jacket")
 
-      change_task.update(params: new_task_hash)
+      other_task = Task.find_by(task_name: "Take a break!")
+
+      # task_to_delete.destroy
 
       # Assert
-      expect { }.must_change
-      must_respond_with :success
-      must_redirect_to task_path
+
+      # NEED HELP WITH THE NEXT THREE TESTS!!!
+      expect {
+        task_to_delete.destroy
+      }.must_change "Task.count", -1
+      # must_respond_with :success
+
+      # expect {
+      #   other_task.destroy
+      # }.must_respond_with :success
+      # must_redirect_to tasks_path
     end
+
+    # it "will give a 404 error if trying to delete a non-existant task" do
+    #   task_to_delete = Task.find_by(id: -1)
+    #   expect {
+    #     task_to_delete.destroy
+    #   }.must_respond_with :missing
+    # end
   end
 
   # Complete for Wave 4

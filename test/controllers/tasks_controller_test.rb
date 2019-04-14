@@ -224,6 +224,23 @@ describe TasksController do
 
   # Complete for Wave 4
   describe "toggle_complete" do
-    # Your tests go here
+    # Arrange
+    before do
+      Task.create(task_name: "Finish writing this test.", description: "One that is waterproof; check The Bins.", date_due: "2020-03-15")
+
+      Task.create(task_name: "Take another break!", description: "For real this time.", date_due: "2019-04-14", completed: true)
+    end
+
+    task_to_toggle1 = Task.find_by(task_name: "Finish writing this test.")
+    task_to_toggle2 = Task.find_by(task_name: "Take another break!")
+    # expect {
+    #   task_to_toggle1.toggle_completed
+    # }.must_change task_to_toggle[:completed], true
+
+    # Act
+    task_to_toggle2.toggle_completed
+
+    # Assert
+    expect(task_to_toggle2[:completed]).must_equal false
   end
 end

@@ -8,7 +8,7 @@
     <%= task.date_due %>
     Done?
     <%= task.completed %>
-    <%#= link_to "toggle", task_path(task.id), method: :patch, data: task.toggle_completed_status%>
+    <%= link_to "toggle", task_path(task.id), method: :puts %>
     <%= link_to "Edit", edit_task_path(task.id) %>
     <%= link_to 'Delete', task_path(task), 
       method: :delete, data: { confirm: 'Are you sure?' } %>

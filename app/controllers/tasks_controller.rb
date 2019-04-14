@@ -62,15 +62,17 @@ class TasksController < ApplicationController
     end
   end
 
-  def toggle_completed_status
-    this_task = Task.find_by(id: params[:id])
-    this_task.toggle(:completed).save
-    # if task.completed == true
-    #   task.completed = false
-    # else
-    #   task.completed = true
-    # end
-  end
+  # def toggle_completed_status
+  #   this_task = Task.find_by(id: params[:id])
+  #   this_task.toggle(:completed).save
+
+  #   # option 2
+  #   # if task.completed == true
+  #   #   task.completed = false
+  #   # else
+  #   #   task.completed = true
+  #   # end
+  # end
 
   private
 

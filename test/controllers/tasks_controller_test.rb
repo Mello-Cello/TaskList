@@ -136,14 +136,14 @@ describe TasksController do
         task: {
           task_name: "Buy groceries",
           description: "Silk vanilla almond creamer and bacon",
-          date_due: "2019-04-15",
+          date_due: "2019-04-15".to_date,
           completed: false,
         },
       }
     }
 
     it "can update an existing task" do
-      skip
+      # skip
 
       id = Task.last.id
       expect {
@@ -153,9 +153,9 @@ describe TasksController do
       must_respond_with :redirect
 
       task = Task.find_by(id: id)
-      expect(task.task_name).must_equal task_hash[:task][:task_name]
-      expect(task.description).must_equal task_hash[:task][:description]
-      expect(task.date_due).must_equal task_hash[:task][:date_due]
+      expect(task.task_name).must_equal new_task_hash[:task][:task_name]
+      expect(task.description).must_equal new_task_hash[:task][:description]
+      expect(task.date_due).must_equal new_task_hash[:task][:date_due]
     end
 
     # THIS IS THE FIRST THING I TRIED WRITING. IT GAVE AN ERROR.
@@ -190,6 +190,7 @@ describe TasksController do
     end
 
     it "will destroy an existing task" do
+      skip
       # Arrange
       change_task = Task.find_by(task_name: "Acquire a rain jacket")
 

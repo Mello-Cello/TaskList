@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root "tasks#index"
-  put "/tasks/:id", to: "tasks#toggle_completed", as: "toggle_completed_action"
+  put "/tasks/:id/toggle_completed", to: "tasks#toggle_completed", as: "toggle_completed_action"
 
   resources :tasks
 

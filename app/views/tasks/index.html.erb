@@ -13,7 +13,7 @@
       method: :delete, data: { confirm: 'Are you sure?' } %>
     Done?
     <%= task.completed %>
-    <%= link_to "toggle", task_path(task.id), method: :put %>
+    <%= link_to "toggle", toggle_completed_action_path(task), method: :put %>
     completed at: 
     <%= task.date_completed %>
   </li>

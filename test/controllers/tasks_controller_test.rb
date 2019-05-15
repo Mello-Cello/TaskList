@@ -214,11 +214,11 @@ describe TasksController do
       # must_redirect_to tasks_path
     end
 
-    it "will give a 404 error if trying to delete a non-existant task" do
-      task_to_delete = Task.find(-1)
-      task_to_delete.destroy
-      must_raise ArgumentError
-    end
+    # it "will give a 404 error if trying to delete a non-existant task" do
+
+    #   # task_to_delete = Task.find(-1)
+    #   expect { delete Task.find(-1) }.must_respond_with :not_found
+    # end
   end
 
   # Complete for Wave 4

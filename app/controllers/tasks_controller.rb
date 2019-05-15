@@ -54,6 +54,7 @@ class TasksController < ApplicationController
     this_task = Task.find_by(id: params[:id])
 
     is_successful = this_task.destroy
+    # puts "is_successful: #{is_successful}"
 
     if is_successful
       redirect_to tasks_path

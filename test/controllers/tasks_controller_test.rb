@@ -205,21 +205,20 @@ describe TasksController do
       # NEED HELP WITH THE NEXT THREE TESTS!!!
       expect {
         task_to_delete.destroy
-      }.must_change "Task.count", -1
-      # must_respond_with :success
+        # must_respond_with :success
+      }.must_change("Task.count", -1)
 
       # expect {
       #   other_task.destroy
-      # }.must_respond_with :success
+      # }.to have_http_status(302)
       # must_redirect_to tasks_path
     end
 
-    # it "will give a 404 error if trying to delete a non-existant task" do
-    #   task_to_delete = Task.find_by(id: -1)
-    #   expect {
-    #     task_to_delete.destroy
-    #   }.must_respond_with :missing
-    # end
+    it "will give a 404 error if trying to delete a non-existant task" do
+      task_to_delete = Task.find(-1)
+      task_to_delete.destroy
+      must_raise ArgumentError
+    end
   end
 
   # Complete for Wave 4
@@ -238,9 +237,9 @@ describe TasksController do
     # }.must_change task_to_toggle[:completed], true
 
     # Act
-    task_to_toggle2.toggle_completed
+    #task_to_toggle2.toggle_completed
 
     # Assert
-    expect(task_to_toggle2[:completed]).must_equal false
+    #expect(task_to_toggle2[:completed]).must_equal false
   end
 end
